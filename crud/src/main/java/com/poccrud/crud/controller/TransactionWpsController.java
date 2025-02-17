@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.poccrud.crud.services.TransactionService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/transactions")
 public class TransactionWpsController {
@@ -17,14 +19,14 @@ public class TransactionWpsController {
     private TransactionService service;
 
     @GetMapping(value = "/origin/{id}")
-    public ResponseEntity<TransactionWpsDTO> findByOriginId(@PathVariable Long id) {
-        TransactionWpsDTO dto = service.findByOriginId(id);
+    public ResponseEntity<List<TransactionWpsDTO>> findByOriginId(@PathVariable Long id) {
+        List<TransactionWpsDTO> dto = service.findByOriginId(id);
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping(value = "/destination/{id}")
-    public ResponseEntity<TransactionWpsDTO> findByDestinationId(@PathVariable Long id) {
-        TransactionWpsDTO dto = service.findByDestinationId(id);
+    public ResponseEntity<List<TransactionWpsDTO>> findByDestinationId(@PathVariable Long id) {
+        List<TransactionWpsDTO> dto = service.findByDestinationId(id);
         return ResponseEntity.ok(dto);
     }
 }
